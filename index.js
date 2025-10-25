@@ -94,7 +94,7 @@ function calculateBMI() {
 
   if (gender === "male") {
     if (bmi < 18.5) {
-      msg = "You are underweight. Include healthy & nutritious foods.";
+      msg = "You are underweight. Consume healthy & nutritious foods.";
       color = "#f39c12";
     } else if (bmi >= 18.5 && bmi < 24.9) {
       msg = "You are healthy. Good! Maintain it.";
