@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(background.jpg) no-repeat center fixed;
+  background-size: cover;
+}
+
+.bmiForm {
+  padding: 32px;
+  background: rgba(0, 0, 0, 0.7);
+  margin: 20px auto;
+  width: min(1300px, 100%);
+  border-radius: 20px;
+}
+
+.bmiForm h1 {
+  color: rgb(50, 21, 168);
+  font-weight: bold;
+  font-size: 36px;
+  padding: 5px;
+  text-align: center;
+}
+
+/* === Two-column layout === */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 10px;
+}
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.content {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+}
+
+/* Shared card look */
+.age,
+.i-height,
+.i-weight,
+.gender,
+.card,
+.range-card {
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 95px -30px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.age label,
+.i-height label,
+.i-weight label {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.age input,
+.i-height input,
+.i-weight input {
+  outline: none;
+  border: none;
+  border-bottom: 5px solid #4f7df9;
+  width: 60%;
+  text-align: center;
+  font-size: 22px;
+  font-family: "Nunito", sans-serif;
+  color: #fff;
+  background: transparent;
+}
+
+.gender {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.gender .container {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+.gender .container p {
+  display: flex;
+  text-align: center;
+  margin-left: 10px;
+  color: white;
+}
+
+/* Custom radios */
+.gender .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #b3b3b3;
+  border-radius: 50%;
+}
+.gender .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.gender .container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.gender .container input:checked ~ .checkmark:after {
+  display: block;
+}
+.gender .container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* Button */
+button.calculate {
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  color: #fff;
+  background: rgb(81, 28, 61);
+  font-size: 16px;
+  border-radius: 7px;
+  padding: 12px 0;
+  width: 100%;
+  outline: none;
+  border: none;
+  transition: all 0.3s;
+}
+button.calculate:hover {
+  background: #000;
+}
+
+/* RIGHT side cards */
+.right .ranges .card-title,
+.result .card-title {
+  color: #ccccffe2;
+  margin-bottom: 8px;
+}
+.range-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 860px) {
+  .range-cards {
+    grid-template-columns: 1fr;
+  }
+}
+.range-card h3 {
+  color: #e4e7f5;
+  margin-bottom: 10px;
+}
+.range-card ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+/* Chips (range items) */
+.chip {
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: #0f172a;
+  font-weight: 700;
+  background: #e2e8f0;
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+}
+.chip-ok {
+  background: #a7f3d0; /* emeraldy green */
+}
+.chip-mid {
+  background: #fde68a; /* yellow */
+}
+.chip-warn {
+  background: #fcd9a8; /* amber / light orange */
+}
+.chip-bad {
+  background: #fca5a5; /* red-ish */
+}
+.chip.active {
+  outline: 3px solid #84a6d9;
+  transform: translateY(-1px);
+}
+
+/* Result area (under range cards) */
+.result {
+  padding: 18px;
+  text-align: center;
+}
+.result #result {
+  font-size: 36px;
+  font-weight: 900;
+  color: #ffffff;
+  background-color: #84a6d9;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+#comment {
+  color: #455990;
+  font-weight: 800;
+}
+.comment {
+  display: none;
+  border: dashed 2px;
+  border-radius: 10px;
+  padding: 8px;
+  background: rgba(21, 20, 20, 0.8);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #ccccffe2;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+
+/* small control under gender radios */
+.show-both-row {
+  margin: 10px 0 18px;
+  display: flex;
+  justify-content: center;
+}
+.show-both {
+  color: #e5e7eb;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  user-select: none;
+}
+.show-both input {
+  width: 16px;
+  height: 16px;
+}
+
+/* icon inside chips */
+.chip .chip-icon {
+  display: inline-flex;
+  margin-right: 8px;
+}
+
+/* hide helper */
+.hidden {
+  display: none !important;
+}
+
+/* Minor spacing tune for card titles with icons */
+.range-card h3 i {
+  margin-right: 6px;
+}
